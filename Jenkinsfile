@@ -30,13 +30,13 @@ stages{
             parallel{
                 stage ('Deploy to China'){
                     steps {                    
-                        sh "scp -i /home/ec2-user/tomcat.pem /var/lib/jenkins/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                        sh "scp -i /var/lib/jenkins/tomcat_SSH_key/tomcat.pem /var/lib/jenkins/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage ("Deploy to Germany"){
                     steps {
-                        sh "scp -i /home/ec2-user/tomcat.pem /var/lib/jenkins/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                        sh "scp -i /var/lib/jenkins/tomcat_SSH_key/tomcat.pem /var/lib/jenkins/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
