@@ -30,13 +30,13 @@ stages{
             parallel{
                 stage ('Deploy to China'){
                     steps {                    
-                        sh "scp -r -i StrictHostKeyChecking=no /home/ec2-user/.ssh/tomcat.pem /var/lib/jenkins/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                        sh "scp -r -i /home/ec2-user/.ssh/tomcat.pem /var/lib/jenkins/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage ("Deploy to Germany"){
                     steps {
-                        sh "scp -r -i StrictHostKeyChecking=no /home/ec2-user/.ssh/tomcat.pem /var/lib/jenkins/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                        sh "scp -r -i /home/ec2-user/.ssh/tomcat.pem /var/lib/jenkins/workspace/FullyAutomated/webapp/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
